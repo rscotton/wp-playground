@@ -1,0 +1,4 @@
+[submodule "wordpress-admin-style"]
+	path = wp-content/plugins/WordPress-Admin-Style
+	url = https://github.com/bueltge/WordPress-Admin-Style.git
+	branch = master
