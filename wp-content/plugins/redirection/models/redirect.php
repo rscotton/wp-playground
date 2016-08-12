@@ -145,8 +145,17 @@ class Red_Item {
 	static function create( array $details ) {
 		global $wpdb;
 
+        // array_map callbacks converts booleans to strings, breaking logic for regex assignment later in the function. Save a placeholder for reassignment after the fact.
+        if (isset($details['regex'])) {
+            $regex_placeholder = $details['regex'];
+        }
+
 		$details = array_map( 'trim', $details );
 		$details = array_map( 'stripslashes', $details );
+
+        if (isset($regex_placeholder)) {
+            $details['regex'] = $regex_placeholder;
+        }
 
 		// Auto generate URLs
 		if ( empty( $details['source'] ) )
